@@ -1,0 +1,22 @@
+Mario 10.3.1 Notes
+
+Try to add skull collision
+
+- Map:collides function will return 3 if mario collides with a hazard{}. otherwise return 1 if mario collides with a
+  collidable{}
+	- SKULL is in collidable, so if tile.id == v in collidable{}, check if tile.id == v in hazard{}. if yes then return 3,
+	  otherwise return 1
+- replace Player:checkDamage with Player:takeDamage. so,
+- modify Player:checkLeftCollision and Player:checkRightCollision functions. Store return value of Map:collides in a local 
+  variable num
+- if number == 1 or 3, correct positioning and velocity
+- if number == 3, call Player:takeDamage function
+	- no longer checks for collision, simply deplete health
+	- damage checking function is no longer called every frame in the Player:update function
+- for jumping into hazard, simply add SKULL check in the 'jump' state function
+	- reset player.dy to 0 and fall down just like the powerbox
+- for falling onto hazard, simply call takeDamage in function where we check if mario is standing on the ground/block (in the
+  'falling' state function
+	- again need to store return value of Map:collides in a local variable.
+	- if number == 1 or 3, correct dy and y positioning
+	- if number == 3, call takeDamage function 
