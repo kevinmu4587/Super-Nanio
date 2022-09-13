@@ -11,3 +11,4 @@ To run, drag this file onto LOVE.
 Drag this file into LOVE.
 
 ### Screenshots
+<img src="Screenshot%201.jpg"  width=26% height=26%> <img src="Screenshot%202.jpg"  width=22% height=22%>
